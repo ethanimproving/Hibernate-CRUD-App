@@ -122,7 +122,7 @@ public static void getCustomer(int id) {
 }
 ```
 
-### Errors
+## Errors
 
 #### SELECT command denied
 
@@ -173,3 +173,15 @@ create table customer(
 ```
 
 Note: UNSIGNED means the int will never be a negative value.
+
+####
+
+```warn
+WARN: HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; [org.hibernate.jpa.HibernatePersistenceProvider]
+```
+
+SOLUTION: Replace `org.hibernate.ejb.HibernatePersistence` with `org.hibernate.jpa.HibernatePersistenceProvider` in the `persistence.xml` file:
+
+```xml
+<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+```

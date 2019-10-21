@@ -10,15 +10,15 @@ import java.util.List;
 public class TestSystem {
 
     public static void main(String[] args) {
-        addCustomer("Ethan", "Miller");
-        addCustomer("Deborah", "Miller");
-        addCustomer("Caleb", "Miller");
-        addCustomer("Faith", "Miller");
+//        addCustomer("Ethan", "Miller");
+//        addCustomer("Deborah", "Miller");
+//        addCustomer("Caleb", "Miller");
+//        addCustomer("Faith", "Miller");
         getCustomer(1);
         getCustomers();
-        changeFirstName(1, "Melchizedek");
-        deleteCustomer(2);
-        getCustomers();
+//        changeFirstName(1, "Melchizedek");
+//        deleteCustomer(2);
+//        getCustomers();
 
     }
 
