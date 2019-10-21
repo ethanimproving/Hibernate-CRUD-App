@@ -174,7 +174,7 @@ create table customer(
 
 Note: UNSIGNED means the int will never be a negative value.
 
-####
+#### Deprecation Warnings
 
 ```warn
 WARN: HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; [org.hibernate.jpa.HibernatePersistenceProvider]
@@ -184,4 +184,34 @@ SOLUTION: Replace `org.hibernate.ejb.HibernatePersistence` with `org.hibernate.j
 
 ```xml
 <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+```
+
+#### [Ignore messages](http://magicmonster.com/kb/prg/java/logging/log4j_quick_start.html) below warning level from Jetty
+
+Add the log4j jars to maven
+
+```xml
+<dependency>
+  <groupId>log4j</groupId>
+  <artifactId>log4j</artifactId>
+  <version>1.2.16</version>
+</dependency>
+```
+
+Add a log4j.properties configuration file to resources folder or top level classpath.
+
+```properties
+# Define the root logger with appender file
+log4j.rootLogger = DEBUG, FILE
+
+# Define the file appender
+log4j.appender.FILE=org.apache.log4j.FileAppender
+log4j.appender.FILE.File=${log}/log.out
+
+# Define the layout for file appender
+log4j.appender.FILE.layout=org.apache.log4j.PatternLayout
+log4j.appender.FILE.layout.conversionPattern=%m%n
+
+# Ignore messages below warning level from Jetty, because it's a bit verbose
+log4j.logger.org.sparkproject.jetty=WARN
 ```
