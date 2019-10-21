@@ -1,13 +1,13 @@
 # Hibernate
 
 1. Create new Maven App
-1. Add hibernate-core, hibernate-entitymanager, and mysql-connector-java to dependencies
+1. Add hibernate-core, jaxb-api, and mysql-connector-java to dependencies
 
 
 #### Create new schema
 
 ```sql
-create schema hibernatesandbox
+create schema hibernatesandbox;
 
 use hibernatesandbox;
 
@@ -75,28 +75,13 @@ Create a file called `persistence.xml` with the following boilerplate configurat
 </persistence>
 ```
 
-## Javax API bind
+## Javax API Bind
 
 ```xml
 <dependency>
     <groupId>javax.xml.bind</groupId>
     <artifactId>jaxb-api</artifactId>
     <version>2.2.11</version>
-</dependency>
-<dependency>
-    <groupId>com.sun.xml.bind</groupId>
-    <artifactId>jaxb-core</artifactId>
-    <version>2.2.11</version>
-</dependency>
-<dependency>
-    <groupId>com.sun.xml.bind</groupId>
-    <artifactId>jaxb-impl</artifactId>
-    <version>2.2.11</version>
-</dependency>
-<dependency>
-    <groupId>javax.activation</groupId>
-    <artifactId>activation</artifactId>
-    <version>1.1.1</version>
 </dependency>
 ```
 
