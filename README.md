@@ -116,7 +116,26 @@ emFactory = Persistence.createEntityManagerFactory("org.hibernate.jht");
 
 ### What is a Transaction?
 
+A transaction is a logical unit of work that contains one or more SQL statements. The following is an example of a Read transaction:
 
+```java
+public static void getCustomer(int id) {
+    EntityManager em = JPAUtility.getEntityManager();
+    // :custID is a paramaterized query
+    String query = "select c from Customer c where c.id = :custID";
+
+    TypedQuery<Customer> tq = em.createQuery(query, Customer.class);
+    tq.setParameter("custID", id);
+    Customer customer;
+    try {
+        customer = tq.getSingleResult();
+        System.out.println(customer.getFirstName());
+    } catch (NoResultException ex) {
+        ex.printStackTrace();
+    }
+
+}
+```
 
 ### Errors
 
@@ -155,3 +174,17 @@ With the generation GenerationType.AUTO hibernate will look for the default hibe
 @Column(name = "custID", unique = true)
 private int id;
 ```
+
+Make sure that your ID field is set to AUTO-INCREMENT:
+
+```SQL
+drop table customer;
+
+create table customer(
+	custID int unsigned auto_increment not null primary key,
+	firstName varchar(30) not null,
+	lastName varchar(30) not null
+);
+```
+
+Note: UNSIGNED means the int will never be a negative value.

@@ -11,6 +11,14 @@ public class TestSystem {
 
     public static void main(String[] args) {
         addCustomer("Ethan", "Miller");
+        addCustomer("Deborah", "Miller");
+        addCustomer("Caleb", "Miller");
+        addCustomer("Faith", "Miller");
+        getCustomer(1);
+        getCustomers();
+        changeFirstName(1, "Melchizedek");
+        deleteCustomer(2);
+        getCustomers();
 
     }
 
@@ -101,7 +109,6 @@ public class TestSystem {
             customer = em.find(Customer.class, id);
             em.remove(customer);
 
-            em.persist(customer);
             et.commit();
         } catch (Exception ex) {
             if(et != null) {
